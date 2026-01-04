@@ -1,0 +1,346 @@
+.farm-map-container {
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.map-header {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    margin-bottom: 1rem;
+}
+
+.map-header h2 {
+    font-size: 1.8rem;
+    color: var(--primary-green);
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+}
+
+.plant-count {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.map-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-input,
+.sort-select {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-input:focus,
+.sort-select:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(52, 168, 83, 0.1);
+}
+
+.map-wrapper {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.leaflet-map {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Custom Marker Styles */
+.custom-plant-marker {
+    background: none;
+    border: none;
+}
+
+.marker-pin {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.marker-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--primary-green);
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+
+.marker-dot {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    font-size: 1rem;
+    background: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-green);
+}
+
+/* Custom Popup Styles */
+.custom-popup .leaflet-popup-content-wrapper {
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.popup-content {
+    min-width: 250px;
+}
+
+.popup-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.popup-content h4 {
+    margin: 1rem;
+    color: var(--primary-green);
+    font-size: 1.1rem;
+}
+
+.popup-details {
+    padding: 0 1rem 1rem;
+}
+
+.popup-details p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.empty-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.plants-sidebar {
+    position: fixed;
+    right: 1rem;
+    top: 180px;
+    bottom: 1rem;
+    width: 300px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.plants-sidebar h3 {
+    color: var(--primary-green);
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+.plants-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.plant-card {
+    display: flex;
+    gap: 0.75rem;
+    background: var(--bg-primary);
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.plant-card:hover {
+    border-color: var(--primary-green);
+    transform: translateX(-4px);
+    box-shadow: 0 2px 8px rgba(52, 168, 83, 0.2);
+}
+
+.plant-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid var(--primary-green);
+}
+
+.plant-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.plant-info h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.coordinates {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.timestamp {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.loading-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--border-color);
+    border-top-color: var(--primary-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.popup-btn {
+    width: 100%;
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.popup-btn:hover {
+    background: var(--primary-green-dark);
+}
+
+@media (max-width: 768px) {
+    .farm-map-container {
+        padding: 0.5rem;
+    }
+
+    .map-header {
+        padding: 1rem;
+    }
+
+    .map-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .map-controls {
+        flex-direction: column;
+    }
+
+    .plants-sidebar {
+        position: static;
+        width: 100%;
+        max-height: 300px;
+        margin-top: 1rem;
+    }
+
+    .marker-pin {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Custom scrollbar for plants list */
+.plants-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.plants-list::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 3px;
+}
+
+.plants-list::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 3px;
+}
+
+.plants-list::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-green-dark);
+}
