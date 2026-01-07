@@ -1,6 +1,13 @@
 const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
+// Debug logging
+console.log('Cloudinary Config Loaded:', {
+    cloudName: CLOUDINARY_CLOUD_NAME,
+    preset: CLOUDINARY_UPLOAD_PRESET,
+    fullEnv: import.meta.env
+});
+
 /**
  * Upload image to Cloudinary using unsigned upload preset
  * @param {File} file - Image file to upload
